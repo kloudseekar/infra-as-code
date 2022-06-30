@@ -8,7 +8,7 @@ resource "random_string" "suffix" {
 }
 
 module "vpc" {
-  source  = "/Users/Maninder/Personel/workspace/terraform/modules/aws/vpc"
+  source  = "../../modules/aws/vpc/"
 
   name                 = "${terraform.workspace}-eks-vpc"
   cidr                 = "10.0.0.0/16"

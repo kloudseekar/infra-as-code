@@ -1,6 +1,5 @@
 module "terraform_backend_bucket" {
-  source = "/Users/Maninder/Personel/workspace/terraform/modules/aws/s3-bucket"
-
+  source = "../../modules/aws/s3-bucket"
   bucket = "${var.region_id}-terrraform-statefile"
   acl    = "private"
 
@@ -11,7 +10,7 @@ module "terraform_backend_bucket" {
 }
 
 module "terraform_lock_table" {
-source  = "/Users/Maninder/Personel/workspace/terraform/modules/aws/dynamodb-table"
+source  = "../../modules/aws/dynamodb-table"
 
    name    = "${var.region_id}-terrraform_locktable"
    hash_key = "LockID"
