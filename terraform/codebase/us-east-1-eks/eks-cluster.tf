@@ -1,5 +1,5 @@
 module "eks" {
-  source          = "git@github.com:terraform-aws-modules/terraform-aws-eks.git?ref=v17.24.0"
+  source          = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=v17.24.0"
   cluster_name    = local.cluster_name
   cluster_version = "1.20"
   subnets         = module.vpc.private_subnets
