@@ -81,7 +81,13 @@ pipeline {
                 expression {params.operation == "plan" }
             }
             steps{
-                terraformPlan()
+                    if(params.Action == 'Destroy') {
+                        env.DESTROY = '-destroy'
+                    } else {
+                        env.DESTROY = ""
+                    }
+
+                 terraformPlan(env.DESTROY)
                 }
             }
         // stage('Clean WS')
@@ -99,30 +105,11 @@ pipeline {
 
 
 
-def terraformFormat(){
-    dir("${env.WORKSPACE}/codebase/us-east-1-eks"){
-            sh("""
-            terraform fmt -list=true -write=false -diff=true -check=true
-            """)
-    
-}
-}
-
-def terraformValidate(){
-    dir("${env.WORKSPACE}/codebase/us-east-1-eks"){
-            sh("""
-             terraform validate
-            """)
-    
-}
-}
 
 
-def terraformPlan(){
-                dir("${env.WORKSPACE}/codebase/us-east-1-eks"){
-                        sh "terraform plan -out terraform.tfplan -lock=false;echo \$? > status"
-                        stash name: "terraform-plan", includes: "terraform.tfplan"
-                    }
-                }
+
+
+
+
             
         
