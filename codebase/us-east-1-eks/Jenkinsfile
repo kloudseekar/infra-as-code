@@ -63,7 +63,7 @@ pipeline {
         }
         stage('Terraform Init') {
             steps{
-                terraformInit(${params.AWS_REGION},"codebase/us-east-1-eks")
+                terraformInit("${params.AWS_REGION}","codebase/us-east-1-eks")
                 }
             }
         // stage('Terraform Format') {
