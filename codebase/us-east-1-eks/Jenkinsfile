@@ -80,7 +80,7 @@ pipeline {
         stage('Terraform Plan') {
 
             steps{
-                 terraformPlan(params.operation,${env.workingDirectory})
+                 terraformPlan(params.operation,"${env.workingDirectory}")
                 }
             }
 
@@ -93,7 +93,7 @@ pipeline {
         stage('Terraform Apply') {
 
             steps{
-                 terraformApply(params.operation,${env.workingDirectory})
+                 terraformApply(params.operation,"${env.workingDirectory}")
                 }
             }
 
