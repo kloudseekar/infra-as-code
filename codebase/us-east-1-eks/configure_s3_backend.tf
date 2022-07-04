@@ -1,13 +1,13 @@
-module "terraform_backend_bucket" {
-  source = "../../modules/aws/s3-bucket"
-  bucket = "${var.region_id}-terrraform-statefile"
-  acl    = "private"
+# module "terraform_backend_bucket" {
+#   source = "../../modules/aws/s3-bucket"
+#   bucket = "${var.region_id}-terrraform-statefile"
+#   acl    = "private"
 
-  versioning = {
-    enabled = true
-  }
+#   versioning = {
+#     enabled = true
+#   }
 
-}
+# }
 
 module "terraform_lock_table" {
 source  = "../../modules/aws/dynamodb-table"

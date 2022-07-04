@@ -1,0 +1,7 @@
+    encrypt = true
+    bucket = "us-east-2-terrraform-statefile"
+    dynamodb_table = "us-east-2-terrraform_locktable"
+    key = "terraform.tfstate"
+    region = "us-east-2"
+    shared_credentials_file = "~/.aws/credentials"
+    profile = "ek-terraform"
