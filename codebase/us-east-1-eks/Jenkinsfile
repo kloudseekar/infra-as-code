@@ -91,6 +91,16 @@ pipeline {
             }
         }
 
+        stage('Terraform Apply') {
+            when {
+                expression {params.operation == "apply" || params.operation == "destroy"  }
+            }
+            steps{
+                 terraformApply(params.operation)
+                }
+            }
+
+
         stage('Clean WS')
         {
             steps{
