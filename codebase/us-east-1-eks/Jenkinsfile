@@ -78,10 +78,10 @@ pipeline {
         //     }  
         stage('Terraform Plan') {
             when {
-                expression {params.operation == "plan" }
+                expression {params.operation == "plan" || params.operation == "destroy"  }
             }
             steps{
-                    if(params.Action == 'Destroy') {
+                    if(params.operation == 'destroy') {
                         env.DESTROY = '-destroy'
                     } else {
                         env.DESTROY = ""
