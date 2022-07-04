@@ -84,12 +84,19 @@ pipeline {
                  terraformPlan(params.operation)
                 }
             }
-        // stage('Clean WS')
-        // {
-        //     steps{
-        //     cleanWs()
-        //     }
-        // }
+
+        stage('Approval'){
+            steps{
+                input(message: 'Apply Terraform ?')
+            }
+        }
+
+        stage('Clean WS')
+        {
+            steps{
+            cleanWs()
+            }
+        }
         }
     }
 
