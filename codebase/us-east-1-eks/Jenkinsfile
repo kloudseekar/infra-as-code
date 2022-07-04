@@ -80,7 +80,7 @@ pipeline {
         stage('Terraform Plan') {
 
             steps{
-                 terraformPlan(params.operation,"${env.workingDirectory}")
+                 terraformPlan("${params.AWS_REGION}",params.operation,"${env.workingDirectory}")
                 }
             }
 
