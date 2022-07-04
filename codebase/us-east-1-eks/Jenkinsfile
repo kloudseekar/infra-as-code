@@ -77,9 +77,7 @@ pipeline {
         //         }
         //     }  
         stage('Terraform Plan') {
-            when {
-                expression {params.operation == "plan" || params.operation == "destroy"  }
-            }
+
             steps{
                  terraformPlan(params.operation)
                 }
@@ -92,9 +90,7 @@ pipeline {
         }
 
         stage('Terraform Apply') {
-            when {
-                expression {params.operation == "apply" || params.operation == "destroy"  }
-            }
+
             steps{
                  terraformApply(params.operation)
                 }
