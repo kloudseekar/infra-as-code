@@ -80,14 +80,9 @@ pipeline {
             when {
                 expression {params.operation == "plan" || params.operation == "destroy"  }
             }
-                    if(params.operation == 'destroy') {
-                        env.DESTROY = '-destroy'
-                    } else {
-                        env.DESTROY = ""
-                    }
-
-                 terraformPlan(env.DESTROY)
-
+            steps{
+                 terraformPlan(params.operation)
+                }
             }
         // stage('Clean WS')
         // {
