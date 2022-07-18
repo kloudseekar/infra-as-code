@@ -1,7 +1,7 @@
 @Library('jenkins-shared-library') _
 
-def country_capital = [aws_region: params.AWS_REGION, action: params.action, instance_type: params.instance_type , desired_number:params.desired_number]
-println country_capital
+def conf = [path: "codebase/us-east-1-eks",aws_region: params.AWS_REGION, action: params.action, instance_type: params.instance_type , desired_number:params.desired_number]
+
 
 properties([
     parameters([
@@ -76,7 +76,7 @@ pipeline {
         }
         stage('Terraform test') {
             steps{
-                terraformTest(country_capital)
+                terraformTest(conf)
                 }
             }
 
