@@ -61,7 +61,7 @@ pipeline {
     stages{
         stage('Git Checkout') {
             steps{
-                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/jenkins-parameterized']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kloudseekar/infra-as-code.git']]]
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/jenkins-param']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kloudseekar/infra-as-code.git']]]
             }
         }
         stage('Terraform Init') {
@@ -73,7 +73,7 @@ pipeline {
         stage('Terraform Plan') {
 
             steps{
-                 terraformPlan(params.operation)
+                 terraformPlan(params.operation,params.instance_type,params.desired_number)
                 }
             }
 
