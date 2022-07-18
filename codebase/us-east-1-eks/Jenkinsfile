@@ -1,5 +1,8 @@
 @Library('jenkins-shared-library') _
 
+def map = [aws_region: param.AWS_REGION, action: param.action, instance_type: param.instance_type , desired_number:param.desired_number]
+println map
+
 properties([
     parameters([
         [$class: 'ChoiceParameter',
@@ -44,7 +47,7 @@ properties([
         
 ])
 
-def map = [aws_region: param.AWS_REGION, action: param.action, instance_type: param.instance_type , desired_number:param.desired_number]
+
 
 pipeline {
     agent {
