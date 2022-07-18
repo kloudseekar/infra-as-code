@@ -34,7 +34,10 @@ properties([
             script: [$class: 'GroovyScript',
                 fallbackScript: [classpath: [], sandbox: true, script: 'return ["ERROR"]'],
                 script: [classpath: [], sandbox: true, script: 'return ["init","plan","apply","destroy"]']
-                ]]
+                ]],
+        parameters {
+        string defaultValue: 't2.micro', name: 'instance_type', trim: true
+        }
     ])
     
         
@@ -58,7 +61,7 @@ pipeline {
     stages{
         stage('Git Checkout') {
             steps{
-                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/jenkins']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kloudseekar/infra-as-code.git']]]
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/jenkins-parameterized']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kloudseekar/infra-as-code.git']]]
             }
         }
         stage('Terraform Init') {
@@ -66,16 +69,7 @@ pipeline {
                 terraformInit()
                 }
             }
-        // stage('Terraform Format') {
-        //     steps{
-        //         terraformFormat()
-        //         }
-        //     } 
-        // stage('Terraform Validate') {
-        //     steps{
-        //         terraformValidate()
-        //         }
-        //     }  
+
         stage('Terraform Plan') {
 
             steps{
