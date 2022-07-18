@@ -76,7 +76,7 @@ pipeline {
         }
         stage('Terraform test') {
             steps{
-                terraformTest(country_capital[])
+                terraformTest(country_capital)
                 }
             }
 
