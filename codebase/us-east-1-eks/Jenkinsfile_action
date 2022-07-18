@@ -1,4 +1,4 @@
 @Library('jenkins-shared-library') _
 terraformMastertemplate(
-    path: "codebase/us-east-1-eks"    
+    path: 'codebase/us-east-1-eks',
 )
