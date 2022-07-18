@@ -1,7 +1,7 @@
 @Library('jenkins-shared-library') _
 
-def Map params = [aws_region: param.AWS_REGION, action: param.action, instance_type: param.instance_type , desired_number:param.desired_number]
-println params
+def country_capital = [aws_region: param.AWS_REGION, action: param.action, instance_type: param.instance_type , desired_number:param.desired_number]
+println country_capital
 
 properties([
     parameters([
