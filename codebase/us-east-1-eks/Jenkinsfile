@@ -83,7 +83,8 @@ pipeline {
         stage('Terraform Plan') {
 
             steps{
-                 terraformPlan(params.operation,params.instance_type,params.desired_number)
+                //  terraformPlan(params.operation,params.instance_type,params.desired_number)
+                 terraformPlan(conf)
                 }
             }
 
