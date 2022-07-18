@@ -36,7 +36,8 @@ properties([
                 script: [classpath: [], sandbox: true, script: 'return ["init","plan","apply","destroy"]']
                 ]],
 
-        string (defaultValue: 't2.micro', name: 'instance_type', trim: true)
+        string (defaultValue: 't2.micro', name: 'instance_type', trim: true),
+        string(name: "desired_number", defaultValue: "1", trim: true, description: "")
         
     ])
     
